@@ -11,37 +11,68 @@ public class ParenthesesChecker {
         stackChar = new Stack<>();
     }
 
-    public static boolean checkParentheses(String obj) {
-
-
+    public boolean checkParentheses(String obj) {
         HashMap<Character, Character> charMap = new HashMap<>();
         charMap.put('(', ')');
         charMap.put('[', ']');
         charMap.put('{', '}');
         charMap.put('<', '>');
 
-        char[] brknChar = obj.toCharArray();
-        for (Character character : brknChar) {
+        char [] brkn = obj.toCharArray();
 
-
-            if (charMap.keySet().contains(character) && !stackChar.empty()
-                    && stackChar.peek().equals(charMap.get(character))) {
-                stackChar.pop();
-                return false;
-
-            }  if (stackChar.empty()) {
-                stackChar.push(character);
-                return false;
+            for (Character c : brkn ){
+            if (charMap.keySet().contains(c)) {
+                stackChar.push(c);
             }
+            if (stackChar.empty()) return false;
 
-            else {
-                stackChar.push(character);
-                return false;
+            char test;
+            switch (c) {
+                case (')'): {
+                    test = stackChar.pop();
+                    if (test == '{' || test == '[' || test == '<')
+                        return false;
+                    break;
+                }
             }
         }
-        return stackChar.empty();
+        return stackChar.empty() && true;
     }
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+//
+//
+//            }
+//            if (charMap.keySet().contains(character) && !stackChar.empty()
+//                    && stackChar.peek().equals(charMap.get(character))) {
+//                stackChar.pop();
+//                return false;
+//
+//            }  if (stackChar.empty()) {
+//                stackChar.push(character);
+//                return false;
+//            }
+//
+//            else {
+//                stackChar.push(character);
+//                return false;
+//            }
+//        }
+//        return stackChar.empty();
+//    }
+//}
+//
+//
+//
