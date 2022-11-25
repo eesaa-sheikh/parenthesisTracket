@@ -31,6 +31,7 @@ public class ParenthesesChecker {
 
             }  if (stackChar.empty()) {
                 stackChar.push(character);
+                return false;
             }
 
             else {
